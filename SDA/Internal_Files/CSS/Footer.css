@@ -1,0 +1,105 @@
+.Footer_Full_Box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: var(--Header_Footer_Theme);
+  color: #fff;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  text-align: center;
+}
+
+.Footer_Sub_Box {
+  flex: 1;
+}
+
+.Sub_Box_Heading {
+  text-align: center;
+  color: var(--Header_Footer_Text_Color);
+  font-size: 2vw;
+  margin-bottom: 2vh;
+}
+
+#Sub_Box_Text {
+  color: #fff;
+  font-size: 2.5vh;
+  padding-left: 3vh;
+  text-align: center;
+  max-height: 35vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#Sub_Box_Text::-webkit-scrollbar {
+  display: none;
+}
+
+.Sub_Box_All_Links {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Sub_Box_Links {
+  text-decoration: none;
+  color: #fff;
+  font-size: 3vh;
+  line-height: 5vh;
+  display: inline-block;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#SDA_Mobile_Number {
+  color: wheat;
+  text-decoration: none;
+  font-size: 2.5vh;
+  cursor: pointer;
+}
+
+#Maps_Click_Link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+.Iframe {
+  width: 25vw;
+  height: 25vh;
+}
+
+#Maps_Iframe {
+  width: 20vw;
+  height: 32vh;
+  border: none;
+}
+
+@media (max-width: 900px) {
+  .Footer_Sub_Box,
+  .Footer_Sub_Box_Last {
+    width: 100%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding-bottom: 7vh;
+  }
+
+  .Sub_Box_Heading {
+    font-size: 4vh;
+    padding: 5vh 0;
+  }
+
+  #SDA_Mobile_Number,
+  #Maps_Click_Link {
+    font-size: 3.5vh;
+  }
+
+  .Iframe,
+  #Maps_Iframe {
+    width: 75vw;
+    height: 60vh;
+    margin: auto;
+    display: block;
+  }
+}

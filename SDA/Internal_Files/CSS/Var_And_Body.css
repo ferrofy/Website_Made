@@ -1,0 +1,20 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #222222;
+  color: white;
+}
+
+:root {
+  --Header_Footer_Theme: #721b1b;
+  --Header_Footer_Text_Color: #ffff2c;
+  --YouTube_Color: #ff0000;
+  --FaceBook_Color: #2f00ff;
+  --InstaGram_Color: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  --WhatsApp_Color: #059600;
+  --TeleGram_Color: #00a7a7;
+  --Font_Size_Menu_Bar_Links: 2vw;
+}

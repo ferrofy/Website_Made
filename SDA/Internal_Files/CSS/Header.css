@@ -1,0 +1,166 @@
+.Header_Full_Box {
+  background-color: var(--Header_Footer_Theme);
+  width: 100%;
+  display: flex;
+}
+
+.Logo {
+  padding-left: 1vw;
+  padding-right: 20vw;
+  padding-top: 2.5vh;
+  padding-bottom: 1vh;
+}
+
+#Logo {
+  width: 10vw;
+  height: 10vw;
+}
+
+@media (max-width: 700px) {
+  #Logo {
+    width: 13vw;
+    height: 13vw;
+  }
+}
+
+.Header_Heading {
+  padding-top: 3vh;
+  padding-bottom: 2.5vh;
+}
+
+#Header_Heading_Text {
+  color: var(--Header_Footer_Text_Color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 5vw;
+  font-weight: 600;
+  text-shadow: 10px 1px 4px rgb(0 0 0 / 50%);
+}
+
+#Header_Heading_Text:hover {
+  text-decoration: none;
+}
+
+.Menu_Bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0.5vh 1vw;
+  font-size: 2.2vw;
+  font-weight: 500;
+  position: relative;
+  z-index: 50;
+}
+
+.Menu_Bar_Links {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  padding: 1vh 1vw;
+  display: inline-block;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.Menu_Bar_Links:hover {
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  border-radius: 2vh;
+}
+
+@media (max-width: 700px) {
+  .Menu_Bar {
+    font-size: 2.75vw;
+    padding: 0;
+    margin: 0;
+  }
+
+  :root {
+    --Font_Size_Menu_Bar_Links: 4vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .Menu_Bar {
+    font-size: 3vw;
+    padding: 0;
+    margin: 0;
+  }
+
+  :root {
+    --Font_Size_Menu_Bar_Links: 5vw;
+  }
+}
+
+#YouTube_Link,
+#FaceBook_Link,
+#InstaGram_Link,
+#WhatsApp_Link,
+#TeleGram_Link {
+  font-size: var(--Font_Size_Menu_Bar_Links);
+  margin-right: 1.5vw;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#YouTube_Link {
+  color: var(--YouTube_Color);
+}
+
+#YouTube_Link:hover {
+  padding: 0.75vw;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--YouTube_Color);
+}
+
+#FaceBook_Link {
+  color: var(--FaceBook_Color);
+}
+
+#FaceBook_Link:hover {
+  padding: 0.75vw;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--FaceBook_Color);
+}
+
+#InstaGram_Link {
+  background: var(--InstaGram_Color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+#InstaGram_Link:hover {
+  padding: 0.75vw;
+  border-radius: 10px;
+  background: var(--InstaGram_Color);
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+#WhatsApp_Link {
+  color: var(--WhatsApp_Color);
+}
+
+#WhatsApp_Link:hover {
+  padding: 0.75vw;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--WhatsApp_Color);
+}
+
+#TeleGram_Link {
+  color: var(--TeleGram_Color);
+}
+
+#TeleGram_Link:hover {
+  padding: 0.75vw;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--TeleGram_Color);
+}
