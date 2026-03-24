@@ -1,0 +1,49 @@
+footer {
+    background-color: var(--secondary-color);
+    color: #e0e0e0;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+}
+
+.Footer_Full_Box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.Footer_Sub_Box {
+    flex: 1;
+    min-width: 250px;
+}
+
+.Sub_Box_Heading h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.Sub_Box_All_Links {
+    list-style: none;
+    padding-left: 0;
+}
+
+.Sub_Box_All_Links li {
+    margin-bottom: 0.8rem;
+}
+
+.Sub_Box_Links {
+    transition: color 0.3s;
+    color: #e0e0e0;
+}
+
+.Sub_Box_Links:hover {
+    color: var(--primary-color);
+}
+
+.Sub_Box_Text {
+    margin-bottom: 0.8rem;
+}

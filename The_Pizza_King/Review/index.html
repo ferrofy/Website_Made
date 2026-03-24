@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - The Pizza King</title>
+    <link rel="stylesheet" href="../Files/CSS/Header.css">
+    <link rel="stylesheet" href="../Files/CSS/Main.css">
+    <link rel="stylesheet" href="../Files/CSS/Footer.css">
+    <script src="../Files/JS/Components.js"></script>
+</head>
+<body>
+    <main>
+        <section class="card-section">
+            <h2 class="text-center text-xl">Customer Reviews</h2>
+            <div class="text-center mb-3">
+                <h1 class="color-gold text-xxl mb-0">4.8 ★</h1>
+                <p class="text-lg">Average Rating from 1,240 Reviews</p>
+            </div>
+            
+            <h3 class="mb-1">Leave a Review</h3>
+            <form id="review-form" class="mb-3">
+                <label for="reviewDetails">Your Details (Name / Order ID)</label>
+                <input type="text" id="reviewDetails" required placeholder="E.g. John Doe">
+                
+                <label for="reviewText">Your Experience</label>
+                <textarea id="reviewText" rows="4" required placeholder="Write your review here..."></textarea>
+                
+                <button type="submit" class="btn w-100">Submit Review</button>
+            </form>
+
+            <hr class="divider">
+            <h3 class="mb-2">Recent Reviews</h3>
+            <div class="review-item">
+                <strong class="text-lg">Rahul G.</strong> <span class="color-gold text-lg">★★★★★</span>
+                <p class="mt-1">"Best pizza in town! The crust is so perfectly crispy. The Cheese and Corn pizza was out of this world."</p>
+            </div>
+            <div class="review-item">
+                <strong class="text-lg">Aman S.</strong> <span class="color-gold text-lg">★★★★☆</span>
+                <p class="mt-1">"Loved the Veg Supreme. Delivery was a bit late but worth it. Will definitely order again."</p>
+            </div>
+        </section>
+    </main>
+    <script src="../Files/JS/Main.js"></script>
+</body>
+</html>

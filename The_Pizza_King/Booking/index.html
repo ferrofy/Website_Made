@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Seat - The Pizza King</title>
+    <link rel="stylesheet" href="../Files/CSS/Header.css">
+    <link rel="stylesheet" href="../Files/CSS/Main.css">
+    <link rel="stylesheet" href="../Files/CSS/Footer.css">
+    <script src="../Files/JS/Components.js"></script>
+</head>
+<body>
+    <main>
+        <section class="card-section">
+            <h2 class="text-center mb-2 text-xl">Book a Seat</h2>
+            <form id="booking-form">
+                <label for="email">Customer Email</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+
+                <label for="contact">Contact Number</label>
+                <input type="text" id="contact" required placeholder="Enter contact number">
+
+                <label for="seats">Number of Seats</label>
+                <input type="number" id="seats" min="1" max="20" required placeholder="How many seats?">
+
+                <label for="payment">Payment Option</label>
+                <select id="payment" required>
+                    <option value="cash">Cash on Arrival</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="upi">UPI</option>
+                </select>
+
+                <button type="submit" class="btn w-100 mt-1">Confirm Booking</button>
+            </form>
+        </section>
+    </main>
+    <script src="../Files/JS/Main.js"></script>
+</body>
+</html>

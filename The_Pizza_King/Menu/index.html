@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - The Pizza King</title>
+    <link rel="stylesheet" href="../Files/CSS/Header.css">
+    <link rel="stylesheet" href="../Files/CSS/Main.css">
+    <link rel="stylesheet" href="../Files/CSS/Footer.css">
+    <script src="../Files/JS/Components.js"></script>
+    <style>
+        .scroll-container {
+            display: flex; gap: 2rem; overflow-x: auto; padding-bottom: 2.5rem; margin-bottom: 2rem;
+            scrollbar-width: thin; scrollbar-color: var(--primary-color) transparent;
+        }
+        .pizza-card {
+            border: 1px solid var(--border-color); border-radius: var(--radius); padding: 1.5rem;
+            min-width: 290px; max-width: 290px; background-color: var(--bg-color); text-align: center;
+            transition: var(--transition);
+            display: flex; flex-direction: column; justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+        .pizza-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+        .pizza-img {
+            width: 100%; height: 200px; object-fit: cover; border-radius: 10px;
+            margin-bottom: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="w-100">
+            <div class="card-section" style="max-width: 100%;">
+                <h2 style="color: #2ecc71;" class="text-xl">Veg Pizzas</h2>
+                <div class="scroll-container" id="veg-items"></div>
+            </div>
+
+            <div class="card-section" style="max-width: 100%;">
+                <h2 style="color: #e74c3c;" class="text-xl">Non-Veg Pizzas</h2>
+                <div class="scroll-container" id="non-veg-items"></div>
+            </div>
+            
+            <div class="card-section">
+                <h2 class="text-xl">Cart Options</h2>
+                <p class="mb-2 text-lg">Ensure you have added your pizzas. Proceed to payment details below:</p>
+                <form id="checkout-form">
+                    <label for="checkoutPayment">Payment Methods</label>
+                    <select id="checkoutPayment" required>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                    <button type="submit" class="btn w-100 mt-1">Proceed to Checkout</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../Files/JS/Main.js"></script>
+    <script>
+        const vegContainer = document.getElementById('veg-items');
+        const nonVegContainer = document.getElementById('non-veg-items');
+
+        const vegNames = ["Margherita", "Farmhouse", "Peppy Paneer", "Veg Extravaganza", "Mexican Green Wave", "Deluxe Veggie", "Veggie Paradise", "Cheese n Corn", "Paneer Makhani", "Veg Supreme"];
+        const nonVegNames = ["Pepperoni", "Chicken Dominator", "Non Veg Supreme", "Chicken Golden Delight", "Chicken Sausage", "Chicken Tikka", "Keema Do Pyaza", "BBQ Chicken", "Chicken Fiesta", "Spicy Chicken"];
+
+        function createPizzaCard(name, isVeg, isOut, index) {
+            const card = document.createElement('div');
+            card.className = "pizza-card";
+            
+            let baseSeed = isVeg ? 100 : 200;
+            let imgUrl = `https://images.unsplash.com/photo-1513104890138-7c749659a591?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300&sig=${baseSeed + index}`;
+            let color = isVeg ? "#2ecc71" : "#e74c3c";
+            
+            let content = `<img src="${imgUrl}" alt="${name}" class="pizza-img" loading="lazy">`;
+            content += `<div style="display:flex; flex-direction:column; flex:1; justify-content:flex-end;">`;
+            content += `<h3 class="mb-1" style="color:${color}; font-size: 1.3rem;">${name}</h3>`;
+            content += `<p class="mb-2 text-bold text-lg color-text">$12.99</p>`;
+            
+            if (isOut) {
+                content += `<p style="color: var(--primary-color);" class="mb-1 text-bold">Out Of Stock</p>`;
+                content += `<button class="btn w-100" style="background-color: var(--border-color); color: var(--text-color);" onclick="handleOutOfStock('${name}')">Notify Me</button>`;
+            } else {
+                content += `<button class="btn w-100" onclick="handleAddToCart('${name}', 12.99)">Add To Cart</button>`;
+            }
+            content += `</div>`;
+            card.innerHTML = content;
+            return card;
+        }
+
+        for(let i=0; i<20; i++) {
+            let name = vegNames[i % vegNames.length] + (i >= vegNames.length ? ` ${i+1}` : "");
+            let isOut = i % 6 === 0;
+            vegContainer.appendChild(createPizzaCard(name, true, isOut, i));
+        }
+
+        for(let i=0; i<20; i++) {
+            let name = nonVegNames[i % nonVegNames.length] + (i >= nonVegNames.length ? ` ${i+1}` : "");
+            let isOut = i % 5 === 0; 
+            nonVegContainer.appendChild(createPizzaCard(name, false, isOut, i));
+        }
+    </script>
+</body>
+</html>
