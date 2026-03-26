@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Trust Simulator</title>
+    
+    <link rel="icon" href="Files/icons/favicon.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="Files/CSS/main.css">
+    <link rel="stylesheet" href="Files/CSS/components.css">
+    <link rel="stylesheet" href="Files/CSS/animations.css">
+</head>
+<body>
+    <div class="bg-layer hero-bg"></div>
+    <div class="bg-overlay"></div>
+    <div class="particles-container" id="particles-container"></div>
+
+    <nav class="navbar glass-panel">
+        <div class="logo-container">
+            <img src="Files/logo/logo.png" alt="Security Logo" class="nav-logo glow-effect">
+            <span class="nav-title neon-text">ZERO-TRUST</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#password-sim"><i class="fas fa-key"></i> Password</a></li>
+            <li><a href="#attack-demo"><i class="fas fa-bug"></i> Attacks</a></li>
+            <li><a href="#comparison"><i class="fas fa-shield-alt"></i> Compare</a></li>
+            <li><a href="#education"><i class="fas fa-book"></i> Learn</a></li>
+            <li><button id="theme_toggle_btn" class="theme-toggle-btn"><i class="fas fa-terminal"></i> Hacker Mode</button></li>
+        </ul>
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content glass-panel glow-border float-anim">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch text-neon-blue" data-text="Zero Trust Simulator">Zero Trust Simulator</h1>
+                </div>
+                <h2 class="typing-text-container text-neon-purple">
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </h2>
+                <p class="hero-desc">An interactive, safe environment to learn how hackers exploit weak frontend security and how to defend against them.</p>
+                <div class="hero-cta">
+                    <a href="#password-sim" class="btn btn-primary glow-button"><i class="fas fa-play"></i> Start Simulation</a>
+                    <a href="#education" class="btn btn-secondary"><i class="fas fa-graduation-cap"></i> View Concept Guide</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="password-sim" class="section-container">
+            <div class="section-header">
+                <i class="fas fa-lock neon-icon"></i>
+                <h2 class="section-title">Password Strength Analyzer</h2>
+                <p class="section-subtitle">Real-time analysis of password complexity and brute-force resistance.</p>
+            </div>
+
+            <div class="simulator-card glass-panel flex-layout">
+                <div class="input-area box-part">
+                    <label for="password_input" class="input-label">Enter Target Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-key input-icon"></i>
+                        <input type="password" id="password_input" class="cyber-input" placeholder="p@$$w0rd...">
+                        <button type="button" id="toggle_pwd_visibility" class="btn-icon"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+
+                <div class="analysis-area box-part">
+                    <div class="strength-meter-container">
+                        <div class="strength-header">
+                            <span>Strength Level</span>
+                            <span id="strength_level_text" class="status-badge weak">Weak</span>
+                        </div>
+                        <div class="meter-track">
+                            <div id="strength_bar" class="meter-fill fill-weak"></div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-grid">
+                        <div class="feedback-item" id="req_length"><i class="fas fa-times-circle text-red"></i> <span>8+ Characters</span></div>
+                        <div class="feedback-item" id="req_upper"><i class="fas fa-times-circle text-red"></i> <span>Uppercase Letter</span></div>
+                        <div class="feedback-item" id="req_lower"><i class="fas fa-times-circle text-red"></i> <span>Lowercase Letter</span></div>
+                        <div class="feedback-item" id="req_number"><i class="fas fa-times-circle text-red"></i> <span>Number</span></div>
+                        <div class="feedback-item" id="req_symbol"><i class="fas fa-times-circle text-red"></i> <span>Special Symbol</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="attack-demo" class="section-container">
+            <div class="section-header">
+                <i class="fas fa-spider neon-icon"></i>
+                <h2 class="section-title">Input Validation Exploits</h2>
+                <p class="section-subtitle">Test malicious payloads on unprotected form fields.</p>
+            </div>
+
+            <div class="attack-layout grid-layout-2">
+                <div class="attack-form-container glass-panel">
+                    <h3 class="panel-title"><i class="fas fa-user-circle"></i> Target Login System</h3>
+                    <form id="vulnerable_form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="vuln_username">Username</label>
+                            <input type="text" id="vuln_username" class="cyber-input" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="vuln_password">Password</label>
+                            <input type="password" id="vuln_password" class="cyber-input" autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Execute Request <i class="fas fa-paper-plane"></i></button>
+                    </form>
+
+                    <div class="payload-gallery mt-4">
+                        <p class="small-text text-muted mb-2">Or click to deploy common payloads:</p>
+                        <div class="payload-buttons">
+                            <button class="btn-sm btn-outline-cyan" onclick="injectPayload('\' OR 1=1 --')">SQLi Auth Bypass</button>
+                            <button class="btn-sm btn-outline-cyan" onclick="injectPayload('<script>alert(\'XSS\')</script>')">Reflected XSS</button>
+                            <button class="btn-sm btn-outline-cyan" onclick="injectPayload('&lt;img src=x onerror=alert(1)&gt;')">Image XSS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detection-system glass-panel alert-theme">
+                    <h3 class="panel-title text-red"><i class="fas fa-radiation"></i> Unsafe Input Warning System</h3>
+                    <div id="alert_ui" class="system-monitor default-state">
+                        <div class="monitor-header">
+                            <span class="recording-dot"></span> 
+                            <span>SYSTEM_MONITOR_ACTIVE</span>
+                        </div>
+                        <div class="monitor-body terminal-text" id="detector_output">
+                            > SYSTEM READY.
+                            > AWAITING INPUT VECTORS...
+                        </div>
+                    </div>
+                    
+                    <div id="threat_details" class="threat-details hidden mt-3">
+                        <h4 class="text-orange"><i class="fas fa-exclamation-triangle"></i> Threat Signature Detected</h4>
+                        <ul class="threat-list">
+                            <li><span class="label">Pattern:</span> <span id="detected_pattern" class="value code-font">-</span></li>
+                            <li><span class="label">Attack Type:</span> <span id="detected_type" class="value">-</span></li>
+                            <li><span class="label">Risk Level:</span> <span class="value text-red blink">CRITICAL</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <img src="Files/images/hacker_theme_img2.png" alt="Cyber Security Graphic" class="image-showcase">
+        </section>
+
+        <section id="comparison" class="section-container">
+            <div class="section-header">
+                <i class="fas fa-balance-scale neon-icon"></i>
+                <h2 class="section-title">Validation Architecture</h2>
+                <p class="section-subtitle">Comparison of insecure vs correctly sanitized architectures.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="compare-card insecure glass-panel">
+                    <div class="card-header danger-header">
+                        <i class="fas fa-times-circle"></i> Insecure Implementation
+                    </div>
+                    <div class="card-body">
+                        <p>Direct mapping of user input into DOM or database queries without sanitation.</p>
+                        <div class="code-block">
+<pre><code>let searchBox = document.query('#search').value;
+document.getElementById('results').innerHTML = searchBox;</code></pre>
+                        </div>
+                        <ul class="feature-list bad">
+                            <li><i class="fas fa-times"></i> Trusts client input</li>
+                            <li><i class="fas fa-times"></i> Executes embedded scripts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="compare-card secure glass-panel">
+                    <div class="card-header success-header">
+                        <i class="fas fa-check-circle"></i> Secure Implementation
+                    </div>
+                    <div class="card-body">
+                        <p>Strict input sanitation, type checking, and safe DOM manipulation methods.</p>
+                        <div class="code-block">
+<pre><code>let searchBox = document.query('#search').value;
+let results = document.getElementById('results');
+results.textContent = searchBox;</code></pre>
+                        </div>
+                        <ul class="feature-list good">
+                            <li><i class="fas fa-check"></i> Zero trust architecture</li>
+                            <li><i class="fas fa-check"></i> Uses textContent safely</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section-container z-index-content">
+            <div class="section-header">
+                <i class="fas fa-brain neon-icon"></i>
+                <h2 class="section-title">Threat Intelligence Center</h2>
+                <p class="section-subtitle">Core concepts of frontend security.</p>
+            </div>
+
+            <div class="edu-grid">
+                <div class="edu-card glass-panel hover-glow-main">
+                    <div class="edu-icon"><i class="fas fa-code"></i></div>
+                    <h3>Cross-Site Scripting (XSS)</h3>
+                    <p>Attackers inject malicious client-side scripts into web pages viewed by other users.</p>
+                    <div class="edu-tips">Defense: Use textContent, escape HTML, deploy CSP.</div>
+                </div>
+
+                <div class="edu-card glass-panel hover-glow-alt">
+                    <div class="edu-icon"><i class="fas fa-database"></i></div>
+                    <h3>SQL Injection (SQLi)</h3>
+                    <p>Forms acting as an entry point. Attackers craft inputs manipulating database queries.</p>
+                    <div class="edu-tips">Defense: Prepared statements, strict validation.</div>
+                </div>
+
+                <div class="edu-card glass-panel hover-glow-cyan">
+                    <div class="edu-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Authentication Weakness</h3>
+                    <p>Weak policies rendering systems vulnerable to brute-force and dictionary attacks.</p>
+                    <div class="edu-tips">Defense: Enforce complexity rules locally, rate limiting.</div>
+                </div>
+            </div>
+            
+            <img src="Files/images/hacker_theme_img1.png" alt="Hacker Matrix Graphic" class="image-showcase">
+        </section>
+    </main>
+
+    <footer class="glass-panel">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Files/logo/logo.png" alt="Logo">
+                <span class="neon-text">ZERO-TRUST</span>
+            </div>
+            <p class="student-credit">Educational Project Developed For Security Awareness</p>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fas fa-globe"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zero Trust Simulator. Safe Learning Environment.</p>
+        </div>
+    </footer>
+
+    <script src="Files/JS/audio.js"></script>
+    <script src="Files/JS/animations.js"></script>
+    <script src="Files/JS/password.js"></script>
+    <script src="Files/JS/attack.js"></script>
+    <script src="Files/JS/main.js"></script>
+</body>
+</html>

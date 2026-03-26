@@ -1,0 +1,117 @@
+:root {
+    --bg-dark: #050508;
+    --bg-panel: rgba(15, 15, 25, 0.6);
+    --neon-main: #00e5ff;
+    --neon-alt: #b537f2;
+    --neon-cyan: #0ff0fc;
+    --neon-red: #ff2a2a;
+    --neon-green: #00ff73;
+    --neon-orange: #ff8c00;
+    --text-main: #e0e0ff;
+    --text-muted: #8e8eab;
+    --glass-border: rgba(0, 229, 255, 0.2);
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    --glow-main: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.3);
+    --glow-alt: 0 0 10px rgba(181, 55, 242, 0.5), 0 0 20px rgba(181, 55, 242, 0.3);
+    --glow-red: 0 0 10px rgba(255, 42, 42, 0.5), 0 0 20px rgba(255, 42, 42, 0.3);
+    --transition-fast: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.theme-hacker {
+    --bg-dark: #0a0e0a;
+    --bg-panel: rgba(10, 20, 10, 0.8);
+    --neon-main: #00ff41;
+    --neon-alt: #008f11;
+    --neon-cyan: #00ff41;
+    --text-main: #e0ffe0;
+    --text-muted: #4b8b4b;
+    --glass-border: rgba(0, 255, 65, 0.3);
+    --glow-main: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+    --glow-alt: 0 0 10px rgba(0, 143, 17, 0.5), 0 0 20px rgba(0, 143, 17, 0.3);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    transition: background-color 0.5s ease;
+}
+.bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+    background-color: var(--bg-dark);
+    transition: background-color 0.5s ease;
+}
+.hero-bg {
+    background-image: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.1) 0%, transparent 60%);
+    background-size: cover;
+    background-position: center;
+}
+body.theme-hacker .hero-bg {
+    background-image: radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 60%);
+}
+.particles-container, .bg-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
+}
+.particles-container { z-index: -2; }
+.bg-overlay {
+    background: linear-gradient(180deg, rgba(5,5,8,0) 0%, var(--bg-dark) 100%);
+    z-index: -1;
+}
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.section-container {
+    margin: 6rem 0;
+    padding-top: 4rem;
+}
+.glass-panel {
+    background: var(--bg-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.5s ease;
+}
+.glow-border { position: relative; }
+.glow-border::before {
+    content: ""; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
+    background: linear-gradient(45deg, var(--neon-main), transparent, var(--neon-alt));
+    z-index: -1; border-radius: inherit; opacity: 0.5; filter: blur(5px);
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.neon-text { color: var(--neon-main); text-shadow: var(--glow-main); }
+.text-neon-blue { color: var(--neon-main); text-shadow: var(--glow-main); }
+.text-neon-purple { color: var(--neon-alt); text-shadow: var(--glow-alt); }
+.text-red { color: var(--neon-red); }
+.text-orange { color: var(--neon-orange); }
+.text-green { color: var(--neon-green); }
+.text-cyan { color: var(--neon-cyan); }
+.text-muted { color: var(--text-muted); }
+.small-text { font-size: 0.85rem; }
+.section-title { font-size: 2.5rem; color: var(--text-main); margin-bottom: 0.5rem; display: inline-block; }
+.section-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.neon-icon { font-size: 2rem; color: var(--neon-main); margin-right: 15px; vertical-align: middle; filter: drop-shadow(0 0 5px var(--neon-main)); }
+.code-font { font-family: var(--font-mono); background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
