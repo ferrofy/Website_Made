@@ -1,8 +1,15 @@
-header { background-color: rgba(10, 10, 10, 0.95); border-bottom: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255,215,0,0.2); position: sticky; top: 0; z-index: 1000; padding: 15px 0; }
+header { background-color: rgba(18, 18, 18, 0.98); border-bottom: 1px solid #2a2a2a; position: sticky; top: 0; z-index: 1000; padding: 20px 0; backdrop-filter: blur(10px); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo a { font-size: 2rem; font-weight: bold; color: #ffd700; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 10px rgba(255,215,0,0.6); }
-.nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
-.nav-links a { color: #e0e0e0; font-size: 1.1rem; transition: 0.3s; padding: 5px 10px; border-radius: 4px; text-transform: uppercase; font-weight: bold; }
-.nav-links a:hover { color: #ffd700; text-shadow: 0 0 8px rgba(255,215,0,0.8); }
-.cart-icon { position: relative; }
-.cart-count { position: absolute; top: -10px; right: -15px; background-color: #ffd700; color: #0a0a0a; font-size: 0.85rem; font-weight: bold; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; border-radius: 50%; box-shadow: 0 0 5px rgba(255,215,0,0.5); }
+.logo a { font-size: 1.8rem; font-weight: 300; color: #d4af37; letter-spacing: 4px; text-transform: uppercase; }
+.nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
+.nav-links a { color: #a9a9a9; font-size: 0.9rem; transition: color 0.3s; padding: 5px 0; letter-spacing: 1px; text-transform: uppercase; }
+.nav-links a:hover { color: #d4af37; }
+.cart-icon { position: relative; display: flex; align-items: center; }
+.cart-count { margin-left: 8px; background-color: #d4af37; color: #121212; font-size: 0.8rem; font-weight: bold; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; border-radius: 50%; }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav-container { flex-direction: column; gap: 15px; text-align: center; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .nav-links a { font-size: 0.8rem; }
+}

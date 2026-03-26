@@ -20,7 +20,7 @@ function closeModal() {
 }
 
 function getCart() {
-    let cart = localStorage.getItem('restro_cart');
+    let cart = localStorage.getItem('aura_cart');
     if (cart) {
         return JSON.parse(cart);
     }
@@ -28,8 +28,11 @@ function getCart() {
 }
 
 function saveCart(cart) {
-    localStorage.setItem('restro_cart', JSON.stringify(cart));
+    localStorage.setItem('aura_cart', JSON.stringify(cart));
     updateCartCount();
+    if (window.location.pathname.includes('Cart')) {
+        renderCart();
+    }
 }
 
 function updateCartCount() {
@@ -44,7 +47,7 @@ function updateCartCount() {
     }
 }
 
-function addToCart(id, name, price) {
+function addToCart(id, name, price, img) {
     const cart = getCart();
     let found = false;
     for (let i = 0; i < cart.length; i++) {
@@ -55,14 +58,40 @@ function addToCart(id, name, price) {
         }
     }
     if (!found) {
-        cart.push({ id: id, name: name, price: price, quantity: 1 });
+        cart.push({ id: id, name: name, price: price, img: img, quantity: 1 });
     }
     saveCart(cart);
     showModal("Added to Cart", name + " has been added to your cart!");
 }
 
+function incrementItem(id) {
+    const cart = getCart();
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            cart[i].quantity++;
+            break;
+        }
+    }
+    saveCart(cart);
+}
+
+function decrementItem(id) {
+    let cart = getCart();
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            if (cart[i].quantity > 1) {
+                cart[i].quantity--;
+            } else {
+                cart.splice(i, 1);
+            }
+            break;
+        }
+    }
+    saveCart(cart);
+}
+
 function clearCart() {
-    localStorage.removeItem('restro_cart');
+    localStorage.removeItem('aura_cart');
     updateCartCount();
     if (window.location.pathname.includes('Cart')) {
         renderCart();

@@ -3,29 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart - Restro</title>
+    <title>Cart - Aura</title>
+    <link rel="icon" href="../Files/Images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../Files/CSS/main.css">
     <link rel="stylesheet" href="../Files/CSS/header.css">
     <link rel="stylesheet" href="../Files/CSS/footer.css">
     <script src="../Files/JS/components.js"></script>
     <script src="../Files/JS/main.js"></script>
     <style>
-        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding: 15px 0; }
-        .cart-total { font-size: 1.5rem; text-align: right; margin-top: 20px; }
-        .checkout-btn { width: 100%; display: block; margin-top: 20px; text-align: center; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2a2a; padding: 20px 0; flex-wrap: wrap; gap: 15px; }
+        .cart-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+        .cart-item-info { flex: 1; display: flex; align-items: center; gap: 20px; }
+        .cart-controls { display: flex; align-items: center; gap: 10px; }
+        .cart-controls button { padding: 5px 12px; background: #2a2a2a; border: 1px solid #d4af37; color: #d4af37; cursor: pointer; border-radius: 4px; }
+        .cart-controls button:hover { background: #d4af37; color: #121212; }
+        .cart-total { font-size: 1.8rem; text-align: right; margin-top: 30px; letter-spacing: 1px; }
+        .checkout-btn { width: 100%; display: block; margin-top: 25px; text-align: center; font-size: 1.1rem; padding: 15px; }
     </style>
 </head>
 <body>
     <main class="container">
-        <h1 class="section-title text-center text-gold">Your Cart</h1>
-        <div class="card" id="cart-container">
+        <h1 class="section-title text-center text-gold">Your Reservation Cart</h1>
+        <div class="card" id="cart-container" style="max-width: 800px; margin: 0 auto;">
             
         </div>
-        <div class="cart-total text-silver" id="cart-total-display">
-            Total: $0
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="cart-total text-silver" id="cart-total-display">
+                Total: ₹0
+            </div>
+            <button class="btn checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            <button class="btn btn-silver" style="width: 100%; margin-top: 15px; text-align: center;" onclick="clearCart()">Clear Cart</button>
         </div>
-        <button class="btn checkout-btn" onclick="checkout()">Checkout & View Live Order</button>
-        <button class="btn btn-silver" style="width: 100%; margin-top: 10px; text-align: center;" onclick="clearCart()">Clear Cart</button>
     </main>
 
     <script>
@@ -38,27 +46,36 @@
             let total = 0;
 
             if (cart.length === 0) {
-                cartContainer.innerHTML = '<p class="text-center">Your cart is empty.</p>';
+                cartContainer.innerHTML = '<p class="text-center" style="color: #a9a9a9;">Your cart is beautifully empty.</p>';
             } else {
                 for (let i = 0; i < cart.length; i++) {
                     const item = cart[i];
                     total += item.price * item.quantity;
+                    const imgHtml = item.img ? `<img src="${item.img}" alt="${item.name}">` : '';
 
                     const div = document.createElement('div');
                     div.className = 'cart-item';
                     div.innerHTML = `
-                        <div>
-                            <h3 class="text-silver">${item.name}</h3>
-                            <p>$${item.price} x ${item.quantity}</p>
+                        <div class="cart-item-info">
+                            ${imgHtml}
+                            <div>
+                                <h3 class="text-silver">${item.name}</h3>
+                                <p style="color: #777;">₹${item.price}</p>
+                            </div>
                         </div>
-                        <div class="text-gold" style="font-weight: bold;">
-                            $${item.price * item.quantity}
+                        <div class="cart-controls">
+                            <button onclick="decrementItem(${item.id})">-</button>
+                            <span style="font-size: 1.1rem; width: 20px; text-align: center;">${item.quantity}</span>
+                            <button onclick="incrementItem(${item.id})">+</button>
+                        </div>
+                        <div class="text-gold" style="font-weight: 500; font-size: 1.2rem; min-width: 80px; text-align: right;">
+                            ₹${item.price * item.quantity}
                         </div>
                     `;
                     cartContainer.appendChild(div);
                 }
             }
-            totalDisplay.innerText = 'Total: $' + total;
+            totalDisplay.innerText = 'Total: ₹' + total.toLocaleString('en-IN');
         }
 
         function checkout() {
@@ -73,7 +90,25 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             renderCart();
+            // Hook up increment/decrement wrappers if needed, but they are defined in main.js
+            // Because main.js functions decrementItem/incrementItem trigger saveCart() which might not re-render immediately if we don't hook it.
+            // Wait, main.js does:
+            // if (window.location.pathname.includes('Cart')) { renderCart(); } in clearCart but NOT in increment/decrement.
+            // Let's patch it by letting the buttons just call a wrapper here.
         });
+
+        // Overriding the increment/decrement locally to re-render in cart
+        const originalIncrement = incrementItem;
+        incrementItem = function(id) {
+            originalIncrement(id);
+            renderCart();
+        };
+
+        const originalDecrement = decrementItem;
+        decrementItem = function(id) {
+            originalDecrement(id);
+            renderCart();
+        };
     </script>
 </body>
 </html>

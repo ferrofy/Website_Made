@@ -12,7 +12,7 @@ const headerHTML = `
 <header>
     <div class="container nav-container">
         <div class="logo">
-            <a href="${depth}index.html">RESTRO<span class="text-silver">.</span></a>
+            <a href="${depth}index.html">AURA<span class="text-silver">.</span></a>
         </div>
         <ul class="nav-links">
             <li><a href="${depth}index.html">Home</a></li>
@@ -35,9 +35,9 @@ const footerHTML = `
     <div class="container">
         <div class="footer-content">
             <div class="footer-col">
-                <h3>Restro</h3>
-                <p>Premium dining experience.</p>
-                <p>Golden style, neon vibes.</p>
+                <h3>Aura</h3>
+                <p>An elegant dining experience.</p>
+                <p>Taste the aesthetic.</p>
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
@@ -47,13 +47,13 @@ const footerHTML = `
             </div>
             <div class="footer-col">
                 <h3>Contact Us</h3>
-                <p>123 Neon Ave, Gold District</p>
-                <p>Phone: +1 987 654 3210</p>
-                <p>Email: contact@restro.com</p>
+                <p>123 Aesthetic Blvd, Heritage District</p>
+                <p>Phone: +91 987 654 3210</p>
+                <p>Email: contact@aura.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Restro. All Rights Reserved.</p>
+            <p>&copy; 2026 Aura. All Rights Reserved.</p>
         </div>
     </div>
 </footer>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Restro</title>
+    <title>Menu - Aura</title>
+    <link rel="icon" href="../Files/Images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../Files/CSS/main.css">
     <link rel="stylesheet" href="../Files/CSS/header.css">
     <link rel="stylesheet" href="../Files/CSS/footer.css">
@@ -20,14 +21,14 @@
     
     <script>
         const menuItems = [
-            { id: 1, name: "Golden Ribs", price: 45, img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
-            { id: 2, name: "Silver Sushi Roll", price: 30, img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" },
-            { id: 3, name: "Neon Burger", price: 25, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" },
-            { id: 4, name: "Dark Truffle Pasta", price: 35, img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80" },
-            { id: 5, name: "Platinum Pizza", price: 40, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" },
-            { id: 6, name: "Caviar Dreams", price: 80, img: "https://images.unsplash.com/photo-1590189182193-1fd44f2b4048?auto=format&fit=crop&w=800&q=80" },
-            { id: 7, name: "Neon Cocktail", price: 15, img: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=800&q=80" },
-            { id: 8, name: "Golden Fries", price: 12, img: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=800&q=80" }
+            { id: 1, name: "Signature Ribs", price: 3800, img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
+            { id: 2, name: "Premium Sushi Roll", price: 2400, img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" },
+            { id: 3, name: "Aura Burger", price: 1800, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" },
+            { id: 4, name: "Truffle Pasta", price: 2800, img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80" },
+            { id: 5, name: "Artisan Pizza", price: 3200, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" },
+            { id: 6, name: "Caviar Selection", price: 7500, img: "https://images.unsplash.com/photo-1590189182193-1fd44f2b4048?auto=format&fit=crop&w=800&q=80" },
+            { id: 7, name: "Aesthetic Cocktail", price: 1200, img: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=800&q=80" },
+            { id: 8, name: "Truffle Fries", price: 950, img: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=800&q=80" }
         ];
 
         const menuContainer = document.getElementById('menu-container');
@@ -36,10 +37,10 @@
             const card = document.createElement('div');
             card.className = 'card text-center';
             card.innerHTML = `
-                <img src="${item.img}" alt="${item.name}" style="height:200px">
+                <img src="${item.img}" alt="${item.name}" style="height:220px">
                 <h3 class="text-silver">${item.name}</h3>
-                <p class="text-gold" style="font-size: 1.2rem; margin: 10px 0;">$${item.price}</p>
-                <button class="btn" onclick="addToCart(${item.id}, '${item.name}', ${item.price})">Add to Cart</button>
+                <p class="text-gold" style="font-size: 1.2rem; margin: 15px 0;">₹${item.price}</p>
+                <button class="btn" onclick="addToCart(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Add to Cart</button>
             `;
             menuContainer.appendChild(card);
         }
