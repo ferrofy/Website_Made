@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Order - Restro</title>
+    <link rel="stylesheet" href="../Files/CSS/main.css">
+    <link rel="stylesheet" href="../Files/CSS/header.css">
+    <link rel="stylesheet" href="../Files/CSS/footer.css">
+    <script src="../Files/JS/components.js"></script>
+    <script src="../Files/JS/main.js"></script>
+    <style>
+        .tracker { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 40px auto; }
+        .step { padding: 20px; border: 2px solid #333; border-radius: 8px; background-color: #1a1a1a; transition: 0.5s; opacity: 0.5; }
+        .step.active { border-color: #ffd700; box-shadow: 0 0 15px rgba(255,215,0,0.5); opacity: 1; transform: scale(1.05); }
+        .step.completed { border-color: #c0c0c0; box-shadow: 0 0 10px rgba(192,192,192,0.3); opacity: 0.8; }
+        .step h3 { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1 class="section-title text-center text-gold">Live Order Tracker</h1>
+        <div class="tracker" id="tracker-container">
+            <div class="step active" id="step-1">
+                <h3 class="text-silver">Order Received</h3>
+                <p>We are reviewing your golden order.</p>
+            </div>
+            <div class="step" id="step-2">
+                <h3 class="text-silver">Preparing</h3>
+                <p>Our chefs are adding premium ingredients.</p>
+            </div>
+            <div class="step" id="step-3">
+                <h3 class="text-silver">Out for Delivery</h3>
+                <p>Your order is on the way in our neon fleet.</p>
+            </div>
+            <div class="step" id="step-4">
+                <h3 class="text-silver">Delivered</h3>
+                <p>Enjoy your meal!</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let currentStep = 1;
+            const steps = [
+                document.getElementById('step-1'),
+                document.getElementById('step-2'),
+                document.getElementById('step-3'),
+                document.getElementById('step-4')
+            ];
+
+            setInterval(() => {
+                if (currentStep < 4) {
+                    steps[currentStep - 1].classList.remove('active');
+                    steps[currentStep - 1].classList.add('completed');
+                    steps[currentStep].classList.remove('completed');
+                    steps[currentStep].classList.add('active');
+                    currentStep++;
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cake - Restro</title>
+    <link rel="stylesheet" href="../Files/CSS/main.css">
+    <link rel="stylesheet" href="../Files/CSS/header.css">
+    <link rel="stylesheet" href="../Files/CSS/footer.css">
+    <script src="../Files/JS/components.js"></script>
+    <script src="../Files/JS/main.js"></script>
+</head>
+<body>
+    <main class="container">
+        <h1 class="section-title text-center text-silver">Design Custom Cake</h1>
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <form id="cake-form">
+                <div class="form-group">
+                    <label for="flavor">Base Flavor</label>
+                    <select id="flavor" required>
+                        <option value="">Select Flavor</option>
+                        <option value="dark-chocolate">Dark Chocolate Truffle</option>
+                        <option value="vanilla-bean">Madagascar Vanilla Bean</option>
+                        <option value="red-velvet">Premium Red Velvet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="frosting">Frosting Style</label>
+                    <select id="frosting" required>
+                        <option value="">Select Frosting</option>
+                        <option value="gold-flake">24k Gold Flake</option>
+                        <option value="silver-dust">Silver Dust</option>
+                        <option value="neon-glaze">Neon Glaze</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tiers">Number of Tiers</label>
+                    <input type="number" id="tiers" min="1" max="5" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Custom Message on Cake</label>
+                    <input type="text" id="message" placeholder="Happy Birthday..." required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Delivery Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="btn btn-silver" style="width: 100%;">Place Custom Cake Order</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('cake-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const flavor = document.getElementById('flavor').value;
+            const frosting = document.getElementById('frosting').value;
+            showModal("Order Success", "Your custom cake custom order for a " + flavor + " cake with " + frosting + " has been placed! We will contact you soon.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>

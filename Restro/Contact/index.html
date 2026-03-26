@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Restro</title>
+    <link rel="stylesheet" href="../Files/CSS/main.css">
+    <link rel="stylesheet" href="../Files/CSS/header.css">
+    <link rel="stylesheet" href="../Files/CSS/footer.css">
+    <script src="../Files/JS/components.js"></script>
+    <script src="../Files/JS/main.js"></script>
+</head>
+<body>
+    <main class="container">
+        <h1 class="section-title text-center text-gold">Contact Us</h1>
+        <div class="grid">
+            <div class="card">
+                <h3 class="text-silver mb-3" style="margin-bottom: 20px;">Get in Touch</h3>
+                <p>We'd love to hear from you. Experience our high-end service before you even step inside.</p>
+                <div style="margin-top: 20px;">
+                    <p><strong>Address:</strong> 123 Neon Ave, Gold District</p>
+                    <p><strong>Phone:</strong> +1 987 654 3210</p>
+                    <p><strong>Email:</strong> contact@restro.com</p>
+                </div>
+            </div>
+            <div class="card">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-msg">Message</label>
+                        <textarea id="contact-msg" rows="4" placeholder="How can we help?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showModal("Message Sent", "Thank you for contacting us. A representative will get back to you shortly.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>
